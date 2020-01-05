@@ -1,21 +1,48 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
+import { useStaticQuery, graphql, Link } from "gatsby"
+
+const IndexPage = () => {
+  const data = useStaticQuery(graphql`
+    query PostExcerpts {
+      allMarkdownRemark{
+        edges{
+          node{
+            frontmatter{
+              title
+              date
+            }
+            id
+            excerpt
+            fields{
+              slug
+            }
+          }
+        }
+      }
+    }
+  `)
+  return (
+    <Layout>
+      <SEO title="Home" />
+      {
+        data.allMarkdownRemark.edges.map(({ node }) => <Preview key={node.id} file={node} />)
+      }
+    </Layout>
+  )
+}
+
+const Preview = ({ file }) => (
+  <>
+    <h1>{file.frontmatter.title}</h1>
+    <sub>{file.frontmatter.date}</sub>
+    <p>{file.excerpt}</p>
+    <Link to={`/${file.fields.slug}`}>Read more</Link>
+  </>
 )
+
 
 export default IndexPage
