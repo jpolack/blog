@@ -2,12 +2,13 @@ import React from "react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Typography from '@material-ui/core/Typography';
 
 import { useStaticQuery, graphql, Link } from "gatsby"
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
-    query PostExcerpts {
+    query{
       allMarkdownRemark{
         edges{
           node{
@@ -37,10 +38,10 @@ const IndexPage = () => {
 
 const Preview = ({ file }) => (
   <>
-    <h1>{file.frontmatter.title}</h1>
-    <sub>{file.frontmatter.date}</sub>
-    <p>{file.excerpt}</p>
-    <Link to={`/${file.fields.slug}`}>Read more</Link>
+    <Typography variant="h2">{file.frontmatter.title}</Typography>
+    <Typography variant="subtitle1">{file.frontmatter.date}</Typography>
+    <Typography variant="body1">{file.excerpt}</Typography>
+    <Typography variant="body2"><Link to={`/${file.fields.slug}`}>Read more</Link></Typography>
   </>
 )
 
