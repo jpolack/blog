@@ -1,35 +1,39 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import Typography from "@material-ui/core/Typography"
+import Grid from "@material-ui/core/Grid"
+import { useTheme } from "@material-ui/core/styles"
+import Divider from "@material-ui/core/Divider"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+const Header = ({ title, subTitle }) => {
+  const theme = useTheme();
+  return (
+    <header>
+      <Link to="/" style={{
+        textDecoration: 'none',
+        color: theme.palette.text.primary,
+      }}>
+        <Grid container justify="center" alignItems="center">
+          <Grid item xs={12}>
+            <Grid container justify="center" alignItems="center">
+              <Typography variant="h1">{title}</Typography>
+            </Grid>
+          </Grid>
+          <Grid item xs={12}>
+            <Grid container justify="center" alignItems="center">
+              <Typography variant="subtitle1">{subTitle}</Typography>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Link>
+      <Divider style={{
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(3),
+      }} />
+    </header>
+  )
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,

@@ -11,7 +11,7 @@ export default ({ data: { markdownRemark, allMarkdownRemark: { edges } } }) => {
     <Layout>
       <SEO title={markdownRemark.frontmatter.title} />
       <Typography variant="h2">{markdownRemark.frontmatter.title}</Typography>
-      <Typography variant="subtitle1">{markdownRemark.frontmatter.date}</Typography>
+      <Typography variant="subtitle2">{markdownRemark.frontmatter.date}</Typography>
       <Typography variant="body1" dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
       <Typography variant="body2"><Link to="/">Return to main Page</Link></Typography>
       {edge.next && <Typography variant="body2"><Link to={edge.next.fields.slug}>Next</Link></Typography>}
