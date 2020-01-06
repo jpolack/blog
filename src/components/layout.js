@@ -9,12 +9,10 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Typography from '@material-ui/core/Typography';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import blue from "@material-ui/core/colors/blue";
 
 import Header from "./header"
-import "./layout.css"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -43,11 +41,6 @@ const Layout = ({ children }) => {
       <div style={{ padding: theme.spacing(3) }}>
         <Header title={data.site.siteMetadata.title} subTitle={data.site.siteMetadata.subTitle} />
         <main>{children}</main>
-        <footer>
-          <Typography>
-            © {new Date().getFullYear()} A Blog by Jonah Polack
-          </Typography>
-        </footer>
       </div>
     </ThemeProvider>
   )

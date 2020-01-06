@@ -11,7 +11,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Roboto']
+          families: ['Montserrat']
         }
       }
     },
@@ -27,6 +27,7 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+        ignore: [`**/\.draft.md`]
       },
     },
     `gatsby-transformer-remark`,

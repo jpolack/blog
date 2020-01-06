@@ -1,0 +1,21 @@
+body .MuiTypography-root,
+body .MuiButton-root{ /* Allgemein */
+    font-family: 'Montserrat', sans-serif;
+}
+body .MuiTypography-h1{ /* Hauptüberschrift */
+    font-size: 2rem;
+}
+body .MuiTypography-h2{ /* Artikelüberschrift */
+    font-size: 1.5rem;
+}
+body .MuiTypography-h3{ /* Mein Name im Profil */
+    font-size: 1rem;
+}
+body .MuiTypography-body1{ /* Fließtext */
+    font-size: 1rem;
+    line-height: 2.2rem;
+}
+body .MuiTypography-body2{ /* Metainformationen */
+    font-size: 1rem;
+    color: #2196f3;
+}

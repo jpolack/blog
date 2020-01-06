@@ -22,7 +22,7 @@ const Header = ({ title, subTitle }) => {
           </Grid>
           <Grid item xs={12}>
             <Grid container justify="center" alignItems="center">
-              <Typography variant="subtitle1">{subTitle}</Typography>
+              <Typography variant="body1">{subTitle}</Typography>
             </Grid>
           </Grid>
         </Grid>

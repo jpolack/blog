@@ -14,7 +14,7 @@ exports.onCreateNode = ({ node, getNode, actions: { createNodeField } }) => {
         return
     }
     const slug = createFilePath({ node, getNode, basePath: 'pages' })
-    
+
     createNodeField({
         node,
         name: `slug`,
@@ -23,29 +23,30 @@ exports.onCreateNode = ({ node, getNode, actions: { createNodeField } }) => {
 }
 
 // Using the slug to create a page with the template
-exports.createPages = async ({ graphql, actions: {createPage} }) => {
+exports.createPages = async ({ graphql, actions: { createPage } }) => {
     const result = await graphql(`
         query {
             allMarkdownRemark {
                 edges {
-                node {
-                    fields {
-                    slug
+                    node {
+                        fields {
+                            slug
+                        }
                     }
-                }
                 }
             }
         }
     `)
-    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-        createPage({
-            path: node.fields.slug,
-            component: path.resolve(`./src/templates/blogpost.js`),
-            context: {
-                // Data passed to context is available
-                // in page queries as GraphQL variables.
-                slug: node.fields.slug,
-            },
+    result.data.allMarkdownRemark.edges
+        .forEach(({ node }) => {
+            createPage({
+                path: node.fields.slug,
+                component: path.resolve(`./src/templates/blogpost.js`),
+                context: {
+                    // Data passed to context is available
+                    // in page queries as GraphQL variables.
+                    slug: node.fields.slug,
+                },
+            })
         })
-    })
 }
