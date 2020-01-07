@@ -2,8 +2,11 @@ module.exports = {
   siteMetadata: {
     title: `Ein Blog`,
     subTitle: `es wird das was es wird`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    metaTitle: `Ein Blog von Jonah Polack`,
+    headline: 'Mindset, Achtsamkeit und Spiritualität',
+    description: `Meine Themen sind Mindset, Achtsamkeit, Spiritualität und allgemein die großen Fragen des Lebens`,
+    author: `Jonah Polack`,
+    siteLanguage: 'de-DE',
     url: 'https://blog.jonahpolack.de'
   },
   plugins: [

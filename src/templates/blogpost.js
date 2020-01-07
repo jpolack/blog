@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import SEO from "../components/seoArticle"
 import Profile from "../components/profile"
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -13,14 +13,19 @@ import { useTheme } from "@material-ui/styles";
 import moment from "moment";
 import { Disqus } from 'gatsby-plugin-disqus'
 
-export default ({ location, data }) => (
-  <Layout>
-    <Blogpost data={data} location={location} />
-  </Layout>
-)
+export default ({ location, data, ...rest }) => {
+  return (
+    <Layout>
+      <Blogpost data={data} location={location} />
+    </Layout>
+  )
+}
 
 const Blogpost = ({
-  data: {
+  data,
+  location
+}) => {
+  const {
     markdownRemark,
     allMarkdownRemark: {
       edges
@@ -28,15 +33,20 @@ const Blogpost = ({
     site: {
       siteMetadata
     }
-  },
-  location
-}) => {
+  } = data;
   const edge = edges.find((edge) => edge.node.fields.slug === markdownRemark.fields.slug)
   const theme = useTheme();
 
+  console.log("data", data)
+
   return (
     <>
-      <SEO title={markdownRemark.frontmatter.title} />
+      <SEO
+        title={markdownRemark.frontmatter.title}
+        description={markdownRemark.frontmatter.title}
+        url={`${siteMetadata.url}${location.pathname}`}
+        node={data.file}
+      />
       <Grid container justify="center" spacing={3}>
         <Grid item lg={6} md={8} sm={12} xs={12}>
           <Paper style={{
@@ -95,7 +105,12 @@ const Blogpost = ({
 }
 
 export const query = graphql`
-  query($slug: String!) {
+  query($slug: String!, $fileAbsolutePath: String!) {
+    file(absolutePath: { eq: $fileAbsolutePath } ) {
+    	birthTime
+    	modifiedTime
+    }
+
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       id

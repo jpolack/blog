@@ -1,7 +1,7 @@
 import React from "react"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import SEO from "../components/seoMain"
 import Profile from "../components/profile"
 import Typography from '@material-ui/core/Typography';
 
@@ -35,7 +35,7 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title="Übersicht" />
       <Grid container spacing={3}>
         <Grid item sm={8} xs={12}>
           <Grid container spacing={3}>
