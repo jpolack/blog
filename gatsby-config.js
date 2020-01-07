@@ -7,6 +7,8 @@ module.exports = {
     description: `Meine Themen sind Mindset, Achtsamkeit, Spiritualität und allgemein die großen Fragen des Lebens`,
     author: `Jonah Polack`,
     siteLanguage: 'de-DE',
+    xing: 'https://www.xing.com/profile/Jonah_Polack',
+    github: 'https://github.com/jpolack',
     url: 'https://blog.jonahpolack.de',
     siteUrl: 'https://blog.jonahpolack.de'
   },
