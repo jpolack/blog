@@ -46,7 +46,7 @@ const Blogpost = ({
         node={data.file}
       />
       <Grid container justify="center" spacing={3}>
-        <Grid item lg={6} md={8} sm={12} xs={12}>
+        <Grid item lg={7} md={8} sm={12} xs={12}>
           <Paper style={{
             padding: theme.spacing(3),
           }}>

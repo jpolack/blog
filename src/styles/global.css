@@ -13,7 +13,7 @@ body .MuiTypography-h3{ /* Mein Name im Profil */
 }
 body .MuiTypography-body1{ /* Fließtext */
     font-size: 1rem;
-    line-height: 2.2rem;
+    line-height: 2rem;
 }
 body .MuiTypography-body2{ /* Metainformationen */
     font-size: 1rem;
