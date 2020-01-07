@@ -37,13 +37,11 @@ const Blogpost = ({
   const edge = edges.find((edge) => edge.node.fields.slug === markdownRemark.fields.slug)
   const theme = useTheme();
 
-  console.log("data", data)
-
   return (
     <>
       <SEO
         title={markdownRemark.frontmatter.title}
-        description={markdownRemark.frontmatter.title}
+        description={markdownRemark.frontmatter.description}
         url={`${siteMetadata.url}${location.pathname}`}
         node={data.file}
       />
@@ -116,6 +114,7 @@ export const query = graphql`
       id
       frontmatter {
         title
+        description
         date
       }
       fields{

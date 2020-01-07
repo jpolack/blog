@@ -7,10 +7,21 @@ module.exports = {
     description: `Meine Themen sind Mindset, Achtsamkeit, Spiritualität und allgemein die großen Fragen des Lebens`,
     author: `Jonah Polack`,
     siteLanguage: 'de-DE',
-    url: 'https://blog.jonahpolack.de'
+    url: 'https://blog.jonahpolack.de',
+    siteUrl: 'https://blog.jonahpolack.de'
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    'gatsby-plugin-sitemap',
+    'gatsby-plugin-feed',
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://blog.jonahpolack.de',
+        sitemap: 'https://blog.jonahpolack.de/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
+    },
     {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
