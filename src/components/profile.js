@@ -12,7 +12,7 @@ import { faXing, faGithub } from '@fortawesome/free-brands-svg-icons'
 import RssFeed from '@material-ui/icons/RssFeed';
 import Img from "gatsby-image"
 
-const Profile = () => {
+const Profile = ({maxWidth}) => {
   const theme = useTheme();
 
   const data = useStaticQuery(graphql`
@@ -41,7 +41,8 @@ const Profile = () => {
       <Grid container spacing={2} justify="center" alignItems="center">
         <Grid item style={{
           width: "100%",
-          height: "100%"
+          height: "100%",
+          maxWidth: 250
         }}>
           <Img fluid={data.file.childImageSharp.fluid} style={{borderRadius: "50%"}}/>
         </Grid>

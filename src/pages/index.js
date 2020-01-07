@@ -36,8 +36,8 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Übersicht" />
-      <Grid container spacing={3}>
-        <Grid item sm={8} xs={12}>
+      <Grid container spacing={3} justify="center">
+        <Grid item lg={7} md={8} sm={12} xs={12}>
           <Grid container spacing={3}>
             {data.allMarkdownRemark.edges
               .sort((edge1, edge2)=>{
@@ -60,7 +60,7 @@ const IndexPage = () => {
             }
           </Grid>
         </Grid>
-        <Grid item sm={4} xs={12}>
+        <Grid item>
           <Profile image={data.file} />
         </Grid>
       </Grid>
