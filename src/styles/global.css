@@ -19,3 +19,18 @@ body .MuiTypography-body2{ /* Metainformationen */
     font-size: 1rem;
     color: #2196f3;
 }
+
+/* Formattierung Fließtext */
+blockquote p{
+    font-style: italic;
+}
+blockquote p::before {
+    content: '\201E'
+}
+blockquote p::after {
+    content: '\201D'
+}
+p a {
+    color: #2196f3;
+    text-decoration: none;
+}

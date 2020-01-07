@@ -9,15 +9,28 @@ import Grid from '@material-ui/core/Grid';
 import ArrowForward from '@material-ui/icons/ArrowForward';
 import ArrowBack from '@material-ui/icons/ArrowBack';
 import Paper from "@material-ui/core/Paper";
-import { useTheme } from "@material-ui/styles"
+import { useTheme } from "@material-ui/styles";
+import moment from "moment";
+import { Disqus } from 'gatsby-plugin-disqus'
 
-export default ({ data: { markdownRemark, allMarkdownRemark: { edges } } }) => (
+export default ({ location, data }) => (
   <Layout>
-    <Blogpost markdownRemark={markdownRemark} edges={edges}/>
+    <Blogpost data={data} location={location} />
   </Layout>
 )
 
-const Blogpost = ({ markdownRemark, edges}) => {
+const Blogpost = ({
+  data: {
+    markdownRemark,
+    allMarkdownRemark: {
+      edges
+    },
+    site: {
+      siteMetadata
+    }
+  },
+  location
+}) => {
   const edge = edges.find((edge) => edge.node.fields.slug === markdownRemark.fields.slug)
   const theme = useTheme();
 
@@ -30,7 +43,7 @@ const Blogpost = ({ markdownRemark, edges}) => {
             padding: theme.spacing(3),
           }}>
             <Typography variant="h2" gutterBottom>{markdownRemark.frontmatter.title}</Typography>
-            <Typography variant="body2">Gepostet am {markdownRemark.frontmatter.date}</Typography>
+            <Typography variant="body2">Gepostet am {moment(markdownRemark.frontmatter.date).format("DD.MM.YYYY")}</Typography>
             <Typography variant="body1" dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
             <Grid container justify="space-between" spacing={3}>
               {edge.previous
@@ -62,6 +75,15 @@ const Blogpost = ({ markdownRemark, edges}) => {
                 : <Grid item />
               }
             </Grid>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <Disqus config={{
+                  url: `${siteMetadata.url}${location.pathname}`,
+                  identifier: markdownRemark.id,
+                  title: markdownRemark.frontmatter.title,
+                }} />
+              </Grid>
+            </Grid>
           </Paper>
         </Grid>
         <Grid item>
@@ -76,6 +98,7 @@ export const query = graphql`
   query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
+      id
       frontmatter {
         title
         date
@@ -86,23 +109,29 @@ export const query = graphql`
     }
 
     allMarkdownRemark{
-        edges{
-          next{
-            fields{
-              slug
-            }
+      edges{
+        next{
+          fields{
+            slug
           }
-          previous{
-            fields{
-              slug
-            }
+        }
+        previous{
+          fields{
+            slug
           }
-          node{
-            fields{
-              slug
-            }
+        }
+        node{
+          fields{
+            slug
           }
         }
       }
+    }
+
+    site{
+      siteMetadata{
+        url
+      }
+    }
   }
 `

@@ -4,6 +4,7 @@ module.exports = {
     subTitle: `es wird das was es wird`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
+    url: 'https://blog.jonahpolack.de'
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -21,6 +22,12 @@ module.exports = {
         name: `posts`,
         path: `${__dirname}/src/posts`,
       },
+    },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `jonahpolack-blog`
+      }
     },
     {
       resolve: `gatsby-source-filesystem`,

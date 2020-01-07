@@ -10,6 +10,7 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import { useTheme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import moment from "moment";
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
@@ -22,7 +23,7 @@ const IndexPage = () => {
               date
             }
             id
-            excerpt
+            excerpt(pruneLength: 280)
             fields{
               slug
             }
@@ -38,11 +39,25 @@ const IndexPage = () => {
       <Grid container spacing={3}>
         <Grid item sm={8} xs={12}>
           <Grid container spacing={3}>
-            {data.allMarkdownRemark.edges.map(({ node }) => (
-              <Grid key={node.id} item xs={12}>
-                <Preview file={node} />
-              </Grid>
-            ))}
+            {data.allMarkdownRemark.edges
+              .sort((edge1, edge2)=>{
+                const date1 = moment(edge1.node.frontmatter.date)
+                const date2 = moment(edge2.node.frontmatter.date)
+          
+                if(date1.isAfter(date2)){
+                  return -1
+                }
+                if(date1.isBefore(date2)){
+                  return 1
+                }
+                return 0
+              })
+              .map(({ node }) => (
+                <Grid key={node.id} item xs={12}>
+                  <Preview file={node} />
+                </Grid>
+              ))
+            }
           </Grid>
         </Grid>
         <Grid item sm={4} xs={12}>
@@ -63,7 +78,7 @@ const Preview = ({ file }) => {
       <Typography variant="body1" gutterBottom>{file.excerpt}</Typography>
       <Typography variant="body2" style={{
         paddingBottom: theme.spacing(2)
-      }}>{file.frontmatter.date}</Typography>
+      }}>{moment(file.frontmatter.date).format("DD.MM.YYYY")}</Typography>
       <Button color="primary" variant="outlined" component={Link} to={`${file.fields.slug}`}>Mehr lesen</Button>
     </Paper>
   )
