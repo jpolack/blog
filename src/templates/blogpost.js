@@ -52,7 +52,9 @@ const Blogpost = ({
           }}>
             <Typography variant="h2" gutterBottom>{markdownRemark.frontmatter.title}</Typography>
             <Typography variant="body2">Gepostet am {moment(markdownRemark.frontmatter.date).format("DD.MM.YYYY")}</Typography>
-            <Typography variant="body1" dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
+            <Typography variant="body1">
+              <div dangerouslySetInnerHTML={{ __html: markdownRemark.html }}/>
+            </Typography>
             <Grid container justify="space-between" spacing={3}>
               {edge.previous
                 ? (
