@@ -10,7 +10,6 @@ import Typography from '@material-ui/core/Typography';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXing, faGithub } from '@fortawesome/free-brands-svg-icons'
 import RssFeed from '@material-ui/icons/RssFeed';
-import Avatar from '@material-ui/core/Avatar';
 import Img from "gatsby-image"
 
 const Profile = () => {
@@ -27,8 +26,8 @@ const Profile = () => {
       }
       file(relativePath: { eq: "Profile.jpg" }) {
         childImageSharp {
-          fixed(width: 400, height: 400) {
-            ...GatsbyImageSharpFixed
+          fluid(maxWidth: 400, maxHeight: 400) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
@@ -40,11 +39,11 @@ const Profile = () => {
       padding: theme.spacing(3),
     }}>
       <Grid container spacing={2} justify="center" alignItems="center">
-        <Grid item>
-          <Avatar component={Img} fixed={data.file.childImageSharp.fixed} variant="circle" style={{
-            width: theme.spacing(18),
-            height: theme.spacing(18)
-          }}></Avatar>
+        <Grid item style={{
+          width: "100%",
+          height: "100%"
+        }}>
+          <Img fluid={data.file.childImageSharp.fluid} style={{borderRadius: "50%"}}/>
         </Grid>
         <Grid item>
           <Grid container spacing={3}>
@@ -58,10 +57,12 @@ const Profile = () => {
               <Typography variant="body1" style={{
                 paddingBottom: theme.spacing(2)
               }}>und fragt gerne "Warum?"</Typography>
-              <Button color="primary" variant="outlined" href="https://jonahpolack.de">Kontakt aufnehmen</Button>
+              <Grid container justify='center' alignItems='center'>
+                <Button color="primary" variant="outlined" href="https://jonahpolack.de">Kontakt aufnehmen</Button>
+              </Grid>
             </Grid>
           </Grid>
-          <Grid container spacing={3}>
+          <Grid container spacing={3} justify='center' alignItems='center'>
             <Grid item>
               <IconButton href={`${data.site.siteMetadata.url}/rss.xml`} target='_blank'><RssFeed /></IconButton>
               <IconButton href={`${data.site.siteMetadata.xing}`} target='_blank'><FontAwesomeIcon icon={faXing} /></IconButton>
