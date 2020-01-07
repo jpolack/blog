@@ -17,6 +17,14 @@ module.exports = {
     'gatsby-plugin-sitemap',
     'gatsby-plugin-feed',
     {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        stylesProvider: {
+          injectFirst: true,
+        },
+      },
+    },
+    {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         host: 'https://blog.jonahpolack.de',
