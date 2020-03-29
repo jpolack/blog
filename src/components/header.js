@@ -10,10 +10,18 @@ const Header = ({ title, subTitle }) => {
   const theme = useTheme();
   return (
     <header>
-      <Link to="/" style={{
-        textDecoration: 'none',
-        color: theme.palette.text.primary,
-      }}>
+      <style global jsx>{`
+        html {
+          background-color: ${theme.backgroundColor};
+        }
+      `}</style>
+      <Link
+        to="/"
+        style={{
+          textDecoration: "none",
+          color: theme.palette.text.primary,
+        }}
+      >
         <Grid container justify="center" alignItems="center">
           <Grid item xs={12}>
             <Grid container justify="center" alignItems="center">
@@ -27,10 +35,12 @@ const Header = ({ title, subTitle }) => {
           </Grid>
         </Grid>
       </Link>
-      <Divider style={{
-        marginTop: theme.spacing(3),
-        marginBottom: theme.spacing(3),
-      }} />
+      <Divider
+        style={{
+          marginTop: theme.spacing(3),
+          marginBottom: theme.spacing(3),
+        }}
+      />
     </header>
   )
 }

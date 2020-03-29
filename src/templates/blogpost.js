@@ -49,6 +49,7 @@ const Blogpost = ({
         <Grid item lg={7} md={8} sm={12} xs={12}>
           <Paper style={{
             padding: theme.spacing(3),
+            backgroundColor: theme.backgroundColor
           }}>
             <Typography variant="h2" gutterBottom>{markdownRemark.frontmatter.title}</Typography>
             <Typography variant="body2">Gepostet am {moment(markdownRemark.frontmatter.date).format("DD.MM.YYYY")}</Typography>

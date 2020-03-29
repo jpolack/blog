@@ -73,6 +73,7 @@ const Preview = ({ file }) => {
   return (
     <Paper style={{
       padding: theme.spacing(3),
+      backgroundColor: theme.backgroundColor
     }}>
       <Typography variant="h2" gutterBottom>{file.frontmatter.title}</Typography>
       <Typography variant="body1" gutterBottom>{file.excerpt}</Typography>

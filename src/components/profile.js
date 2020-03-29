@@ -35,39 +35,85 @@ const Profile = ({maxWidth}) => {
   `)
 
   return (
-    <Paper style={{
-      padding: theme.spacing(3),
-    }}>
+    <Paper
+      style={{
+        padding: theme.spacing(3),
+        backgroundColor: theme.backgroundColor,
+      }}
+    >
       <Grid container spacing={2} justify="center" alignItems="center">
-        <Grid item style={{
-          width: "100%",
-          height: "100%",
-          maxWidth: 250
-        }}>
-          <Img fluid={data.file.childImageSharp.fluid} style={{borderRadius: "50%"}}/>
+        <Grid
+          item
+          style={{
+            width: "100%",
+            height: "100%",
+            maxWidth: 250,
+          }}
+        >
+          <Img
+            fluid={data.file.childImageSharp.fluid}
+            style={{ borderRadius: "50%" }}
+          />
         </Grid>
         <Grid item>
           <Grid container spacing={3}>
             <Grid item>
               <Typography variant="h2">Über mich</Typography>
-              <Typography variant="h3" style={{
-                paddingTop: theme.spacing(2),
-                paddingBottom: theme.spacing(2)
-              }}>Jonah Polack</Typography>
+              <Typography
+                variant="h3"
+                style={{
+                  paddingTop: theme.spacing(2),
+                  paddingBottom: theme.spacing(2),
+                }}
+              >
+                Jonah Polack
+              </Typography>
               <Typography variant="body1">Aus Köln</Typography>
-              <Typography variant="body1" style={{
-                paddingBottom: theme.spacing(2)
-              }}>und fragt gerne "Warum?"</Typography>
-              <Grid container justify='center' alignItems='center'>
-                <Button color="primary" variant="outlined" href="https://jonahpolack.de">Kontakt aufnehmen</Button>
+              <Typography
+                variant="body1"
+                style={{
+                  paddingBottom: theme.spacing(2),
+                }}
+              >
+                und fragt gerne "Warum?"
+              </Typography>
+              <Grid container justify="center" alignItems="center">
+                <Button
+                  color="primary"
+                  variant="outlined"
+                  href="https://jonahpolack.de"
+                >
+                  Kontakt aufnehmen
+                </Button>
               </Grid>
             </Grid>
           </Grid>
-          <Grid container spacing={3} justify='center' alignItems='center'>
+          <Grid container spacing={3} justify="center" alignItems="center">
             <Grid item>
-              <IconButton href={`${data.site.siteMetadata.url}/rss.xml`} target='_blank'><RssFeed /></IconButton>
-              <IconButton href={`${data.site.siteMetadata.xing}`} target='_blank'><FontAwesomeIcon icon={faXing} /></IconButton>
-              <IconButton href={`${data.site.siteMetadata.github}`} target='_blank'><FontAwesomeIcon icon={faGithub} /></IconButton>
+              <IconButton
+                href={`${data.site.siteMetadata.url}/rss.xml`}
+                target="_blank"
+              >
+                <RssFeed htmlColor={theme.palette.text.primary} />
+              </IconButton>
+              <IconButton
+                href={`${data.site.siteMetadata.xing}`}
+                target="_blank"
+              >
+                <FontAwesomeIcon
+                  icon={faXing}
+                  color={theme.palette.text.primary}
+                />
+              </IconButton>
+              <IconButton
+                href={`${data.site.siteMetadata.github}`}
+                target="_blank"
+              >
+                <FontAwesomeIcon
+                  icon={faGithub}
+                  color={theme.palette.text.primary}
+                />
+              </IconButton>
             </Grid>
           </Grid>
         </Grid>
