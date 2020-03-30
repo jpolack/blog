@@ -8,7 +8,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import moment from "moment"
 
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import blue from "@material-ui/core/colors/blue";
@@ -27,16 +26,16 @@ const Layout = ({ children }) => {
     }
   `)
 
-  // const lightTheme = {
-  //   palette: {
-  //     primary: blue,
-  //     text: {
-  //       primary: "#4a4a4a",
-  //       secondary: "#4a4a4a",
-  //     },
-  //   },
-  //   backgroundColor: "#ffffff",
-  // }
+  const lightTheme = {
+    palette: {
+      primary: blue,
+      text: {
+        primary: "#4a4a4a",
+        secondary: "#4a4a4a",
+      },
+    },
+    backgroundColor: "#ffffff",
+  }
 
   // const darkTheme = {
   //   palette: {
@@ -49,26 +48,9 @@ const Layout = ({ children }) => {
   //   backgroundColor: "#222222",
   // }
 
-  // let selectedTheme
+  let selectedTheme = lightTheme
 
-  // if (moment().get("hour") < 18 && moment().get("hour") > 6){
-  //   selectedTheme = lightTheme
-  //   console.log("LIGHT")
-  // }else{
-  //   selectedTheme = darkTheme
-  //   console.log("DARK")
-  // }
-
-  const theme = createMuiTheme({
-    palette: {
-      primary: blue,
-      text: {
-        primary: "#4a4a4a",
-        secondary: "#4a4a4a",
-      },
-    },
-    backgroundColor: "#ffffff",
-  })
+  const theme = createMuiTheme(selectedTheme)
 
   return (
     <ThemeProvider theme={theme}>
