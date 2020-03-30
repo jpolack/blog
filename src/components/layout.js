@@ -27,7 +27,39 @@ const Layout = ({ children }) => {
     }
   `)
 
-  const lightTheme = {
+  // const lightTheme = {
+  //   palette: {
+  //     primary: blue,
+  //     text: {
+  //       primary: "#4a4a4a",
+  //       secondary: "#4a4a4a",
+  //     },
+  //   },
+  //   backgroundColor: "#ffffff",
+  // }
+
+  // const darkTheme = {
+  //   palette: {
+  //     primary: blue,
+  //     text: {
+  //       primary: "#ffffff",
+  //       secondary: "#ffffff",
+  //     },
+  //   },
+  //   backgroundColor: "#222222",
+  // }
+
+  // let selectedTheme
+
+  // if (moment().get("hour") < 18 && moment().get("hour") > 6){
+  //   selectedTheme = lightTheme
+  //   console.log("LIGHT")
+  // }else{
+  //   selectedTheme = darkTheme
+  //   console.log("DARK")
+  // }
+
+  const theme = createMuiTheme({
     palette: {
       primary: blue,
       text: {
@@ -36,30 +68,7 @@ const Layout = ({ children }) => {
       },
     },
     backgroundColor: "#ffffff",
-  }
-
-  const darkTheme = {
-    palette: {
-      primary: blue,
-      text: {
-        primary: "#ffffff",
-        secondary: "#ffffff",
-      },
-    },
-    backgroundColor: "#222222",
-  }
-
-  let selectedTheme
-
-  if (moment().get("hour") < 18 && moment().get("hour") > 6){
-    selectedTheme = lightTheme
-    console.log("LIGHT")
-  }else{
-    selectedTheme = darkTheme
-    console.log("DARK")
-  }
-
-  const theme = createMuiTheme(selectedTheme)
+  })
 
   return (
     <ThemeProvider theme={theme}>
