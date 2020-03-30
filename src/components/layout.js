@@ -53,8 +53,10 @@ const Layout = ({ children }) => {
 
   if (moment().get("hour") < 18 && moment().get("hour") > 6){
     selectedTheme = lightTheme
+    console.log("LIGHT")
   }else{
     selectedTheme = darkTheme
+    console.log("DARK")
   }
 
   const theme = createMuiTheme(selectedTheme)
