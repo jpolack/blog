@@ -12,7 +12,7 @@ import { faXing, faGithub } from '@fortawesome/free-brands-svg-icons'
 import RssFeed from '@material-ui/icons/RssFeed';
 import Img from "gatsby-image"
 
-const Profile = ({maxWidth}) => {
+const Profile = ({ maxWidth }) => {
   const theme = useTheme();
 
   const data = useStaticQuery(graphql`
@@ -81,7 +81,7 @@ const Profile = ({maxWidth}) => {
                 <Button
                   color="primary"
                   variant="outlined"
-                  href="https://jonahpolack.de"
+                  href="https://www.linkedin.com/in/jonah-polack/"
                 >
                   Kontakt aufnehmen
                 </Button>
